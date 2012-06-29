@@ -5,8 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
         <meta name="keywords" content="reactdb reaction image database" />
         <meta name="description" content="reactdb reaction image database" />
-        <link rel="shortcut icon" href="${request.static_url('reactdb:static/favicon.ico')}" />
-        <link rel="stylesheet" href="${request.static_url('reactdb:static/style.css')}" type="text/css" media="screen" charset="utf-8" />
+        <link rel="shortcut icon" href="${request.static_url ('reactdb:static/favicon.ico')}" />
+        <link rel="stylesheet" href="${request.static_url ('reactdb:static/style.css')}" type="text/css" media="screen" charset="utf-8" />
     </head>
     <body>
         <h1>ReactDB</h1>
@@ -14,6 +14,15 @@
             <form id="reactdb_search_form" action="" method="get">
                 <p><input type="text" name="query" /></p>
             </form>
+        </div>
+        <div id="reactdb_results">
+            % if images is not None:
+            % for image in images:
+            <a href="#"><img class="reactdb_image" src="${request.static_url ('reactdb:static/images/%s' % image.filename)}" /></a>
+            % endfor
+            % else:
+            <p>Your search did not match any images.</p>
+            % endif
         </div>
     </body>
 </html>
