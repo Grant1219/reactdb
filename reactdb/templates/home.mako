@@ -12,13 +12,17 @@
         <h1>ReactDB</h1>
         <div id="reactdb_search">
             <form id="reactdb_search_form" action="" method="get">
+                %if 'query' in request.GET:
+                <p><input type="text" name="query" value="${request.GET['query']}" /></p>
+                %else:
                 <p><input type="text" name="query" /></p>
+                %endif
             </form>
         </div>
         <div id="reactdb_results">
             % if images is not None:
             % for image in images:
-            <a href="#"><img class="reactdb_image" src="${request.static_url ('reactdb:static/images/%s' % image.filename)}" /></a>
+            <a href="${request.static_url ('reactdb:static/images/%s' % image.filename)}"><img class="reactdb_image" src="${request.static_url ('reactdb:static/images/%s' % image.filename)}" /></a>
             % endfor
             % else:
             <p>Your search did not match any images.</p>

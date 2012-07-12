@@ -27,9 +27,11 @@ image_keyword_association = Table ('image_keyword_association', Base.metadata,
     mysql_engine = 'InnoDB'
 )
 
-class Image (Base):
-    __tablename__ = 'image'
+class InnoDB (object):
     __table_args__ = {'mysql_engine': 'InnoDB'}
+
+class Image (Base, InnoDB):
+    __tablename__ = 'image'
 
     id = Column (BigInteger, primary_key = True)
     filename = Column (Unicode (30), unique = True)
@@ -39,9 +41,8 @@ class Image (Base):
     def __init__ (self, filename):
         self.filename = filename
 
-class Keyword (Base):
+class Keyword (Base, InnoDB):
     __tablename__ = 'keyword'
-    __table_args__ = {'mysql_engine': 'InnoDB'}
 
     id = Column (BigInteger, primary_key = True)
     value = Column (Unicode (30), unique = True)

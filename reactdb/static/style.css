@@ -1,7 +1,7 @@
 body {
-    color: maroon;
-    background-color: #ffe;
-    font-family: arial;
+    color: #af0a0f;
+    background: #eef2ff url(/static/fade-blue.png) top center repeat-x;
+    font-family: arial,helvetica,sans-serif;
 }
 
 body h1 {
